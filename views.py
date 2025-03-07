@@ -1,13 +1,17 @@
-import uuid
 import asyncio
 import logging
-
+import sys
 import httpx
 from fastapi import HTTPException, APIRouter
 from schemas import InputData
 from redis_client import store_request_response, get_request_response
 
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
 logger = logging.getLogger(__name__)
 
 
